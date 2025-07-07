@@ -1,0 +1,13 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "driver": "PostgreSQL",
+      "name": "PG Local",
+      "connectString": "host=localhost port=5432 dbname=payments user=postgres password=xxxxxxx connect_timeout=10 sslmode=prefer"
+    }
+  ]
+}
+
+

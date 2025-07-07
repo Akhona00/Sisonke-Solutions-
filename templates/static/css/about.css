@@ -1,6 +1,13 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
 .logo {
@@ -11,6 +18,12 @@ body {
     align-items: center;
     margin-right: 30px;
     margin-left: 30px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
 }
 
 .Navbar {
@@ -18,6 +31,8 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 .Navbar ul {
@@ -25,6 +40,8 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .Navbar li {
@@ -35,6 +52,7 @@ body {
     text-decoration: none;
     color: black;
     font-size: 20px;
+    white-space: nowrap;
 }
 
 .Navbar ul li a:hover {
@@ -101,34 +119,49 @@ body {
 h2 {
     text-align: center;
     color: #063d3a;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
 }
 
 section.about {
     background-color: white;
     color: rgb(0, 0, 0);
-    padding: 40px;
-    border-radius: 50px;
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 30px;
     margin: 20px;
     text-align: center;
     margin-top: 50px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+section.about p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 section.team {
     background-color: white;
     color: black;
-    padding: 40px 20px;
-    border-radius: 50px;
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 30px;
     margin: 20px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.heading p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
 .container {
     position: relative;
     width: 100%;
     max-width: 800px;
-    height: 600px;
+    height: clamp(400px, 60vw, 600px);
     background: #f5f5f5;
     box-shadow: 0 30px 50px #dbdbdb;
     margin: 50px auto;
@@ -137,8 +170,8 @@ section.team {
 }
 
 .container .slide .item {
-    width: 200px;
-    height: 300px;
+    width: clamp(150px, 25vw, 200px);
+    height: clamp(200px, 40vw, 300px);
     position: absolute;
     top: 50%;
     transform: translate(0, -50%);
@@ -166,27 +199,28 @@ section.team {
     left: 50%;
 }
 .slide .item:nth-child(4) {
-    left: calc(50% + 220px);
+    left: calc(50% + clamp(150px, 25vw, 220px));
 }
 .slide .item:nth-child(5) {
-    left: calc(50% + 440px);
+    left: calc(50% + clamp(300px, 50vw, 440px));
 }
 
 .slide .item:nth-child(n + 6) {
-    left: calc(50% + 660px);
+    left: calc(50% + clamp(450px, 75vw, 660px));
     opacity: 0;
 }
 
 .item .content {
     position: absolute;
     top: 50%;
-    left: 100px;
-    width: 300px;
+    left: clamp(20px, 10vw, 100px);
+    width: clamp(250px, 60vw, 300px);
     text-align: left;
     color: #eee;
     transform: translate(0, -50%);
     font-family: system-ui;
     display: none;
+    padding: 20px;
 }
 
 .slide .item:nth-child(2) .content {
@@ -194,11 +228,12 @@ section.team {
 }
 
 .content .name {
-    font-size: 40px;
+    font-size: clamp(24px, 6vw, 40px);
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0;
     animation: animate 1s ease-in-out 1 forwards;
+    margin-bottom: 10px;
 }
 
 .content .des {
@@ -206,6 +241,8 @@ section.team {
     margin-bottom: 20px;
     opacity: 0;
     animation: animate 1s ease-in-out 0.3s 1 forwards;
+    font-size: clamp(12px, 2.5vw, 16px);
+    line-height: 1.4;
 }
 
 @keyframes animate {
@@ -229,8 +266,8 @@ section.team {
 }
 
 .button button {
-    width: 40px;
-    height: 35px;
+    width: clamp(35px, 8vw, 40px);
+    height: clamp(30px, 7vw, 35px);
     border-radius: 8px;
     border: none;
     cursor: pointer;
@@ -238,6 +275,7 @@ section.team {
     border: 1px solid #000;
     transition: 0.3s;
     background: white;
+    font-size: clamp(12px, 3vw, 16px);
 }
 
 .button button:hover {
@@ -248,8 +286,8 @@ section.team {
 
 /* Enhanced Stats Section with Animations */
 .stats-section {
-    margin: 6rem 0;
-    padding: 4rem 2rem;
+    margin: clamp(3rem, 8vw, 6rem) 0;
+    padding: clamp(2rem, 5vw, 4rem) clamp(1rem, 3vw, 2rem);
     background: linear-gradient(135deg, rgba(6, 61, 58, 0.05) 0%, rgba(5, 75, 43, 0.05) 100%);
     border-top: 1px solid rgba(0, 255, 136, 0.2);
     border-bottom: 1px solid rgba(0, 255, 136, 0.2);
@@ -277,13 +315,13 @@ section.team {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(clamp(200px, 25vw, 250px), 1fr));
+    gap: clamp(1.5rem, 4vw, 3rem);
     text-align: center;
 }
 
 .stat-item {
-    padding: 2rem;
+    padding: clamp(1rem, 3vw, 2rem);
     background: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -311,7 +349,7 @@ section.team {
 }
 
 .stat-number {
-    font-size: 3rem;
+    font-size: clamp(2rem, 6vw, 3rem);
     font-weight: 800;
     color: #054b2b;
     margin-bottom: 0.5rem;
@@ -335,7 +373,7 @@ section.team {
 }
 
 .stat-label {
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     color: rgba(9, 108, 101, 0.8);
     font-weight: 600;
     text-transform: uppercase;
@@ -360,11 +398,11 @@ section.team {
 }
 
 footer {
-    background-color: #054b53;
+    background-color: #23818b;
     color: white;
-    padding: 40px 20px;
+    padding: clamp(20px, 5vw, 40px);
     margin-top: 50px;
-    font-size: 14px;
+    font-size: clamp(12px, 2.5vw, 14px);
 }
 
 .footer-container {
@@ -378,25 +416,39 @@ footer {
 
 footer h2 {
     margin-bottom: 10px;
-    font-size: 18px;
+    font-size: clamp(16px, 3vw, 18px);
     color: white;
-    margin-right: 450px;
 }
 
 .address,
 .social,
 .support {
     flex: 1;
-    min-width: 250px;
+    min-width: clamp(200px, 30vw, 250px);
+    margin-bottom: 20px;
 }
 
 .social a {
     margin-right: 10px;
     transition: transform 0.3s ease;
+    display: inline-block;
 }
 
 .social a:hover {
     transform: scale(1.2);
+}
+
+.social img,
+.contact-info img {
+    max-width: 100%;
+    height: auto;
+}
+
+.contact-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .contact-info img {
@@ -408,26 +460,84 @@ footer h2 {
 .contact-info img:hover {
     transform: scale(1.1);
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        height: 400px;
-    }
-            
-    .item .content {
-        left: 20px;
-        width: calc(100% - 40px);
-    }
-            
-    .content .name {
-        font-size: 24px;
-    }
-            
-    .stat-number {
-        font-size: 2rem;
-    }
 
-    /* Mobile dropdown adjustments */
+/* Mobile-First Responsive Design */
+@media (max-width: 480px) {
+    .logo {
+        margin: 0 10px;
+    }
+    
+    .logo img {
+        width: 60px;
+        height: 50px;
+    }
+    
+    .Navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .Navbar ul {
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    
+    .Navbar ul li {
+        margin: 5px;
+    }
+    
+    .Navbar ul li a {
+        font-size: 16px;
+        padding: 5px 8px;
+    }
+    
+    .container {
+        height: 350px;
+        margin: 20px auto;
+    }
+    
+    .container .slide .item {
+        width: 120px;
+        height: 180px;
+    }
+    
+    .slide .item:nth-child(4) {
+        left: calc(50% + 140px);
+    }
+    
+    .slide .item:nth-child(5) {
+        left: calc(50% + 260px);
+    }
+    
+    .item .content {
+        left: 15px;
+        width: calc(100% - 30px);
+        padding: 15px;
+    }
+    
+    .content .name {
+        font-size: 20px;
+    }
+    
+    .content .des {
+        font-size: 12px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .stat-label {
+        font-size: 0.8rem;
+    }
+    
     .dropdown-content {
         position: fixed;
         left: 0;
@@ -436,18 +546,127 @@ footer h2 {
         min-width: 100%;
         max-height: 60vh;
         overflow-y: auto;
+        border-radius: 0;
     }
-
-    .Navbar ul {
-        flex-wrap: wrap;
+    
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
     }
-
-    .Navbar ul li {
-        margin-right: 15px;
-        margin-bottom: 5px;
+    
+    footer h2 {
+        margin-right: 0;
     }
+    
+    .contact-info {
+        justify-content: center;
+    }
+}
 
+/* Tablet Responsive */
+@media (min-width: 481px) and (max-width: 768px) {
+    .logo img {
+        width: 70px;
+        height: 60px;
+    }
+    
     .Navbar ul li a {
+        font-size: 18px;
+    }
+    
+    .container {
+        height: 450px;
+    }
+    
+    .container .slide .item {
+        width: 160px;
+        height: 240px;
+    }
+    
+    .slide .item:nth-child(4) {
+        left: calc(50% + 180px);
+    }
+    
+    .slide .item:nth-child(5) {
+        left: calc(50% + 340px);
+    }
+    
+    .item .content {
+        left: 30px;
+        width: calc(100% - 60px);
+    }
+    
+    .content .name {
+        font-size: 28px;
+    }
+    
+    .content .des {
+        font-size: 14px;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dropdown-content {
+        min-width: 250px;
+    }
+}
+
+/* Large Tablet/Small Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        height: 500px;
+    }
+    
+    .container .slide .item {
+        width: 180px;
+        height: 270px;
+    }
+    
+    .slide .item:nth-child(4) {
+        left: calc(50% + 200px);
+    }
+    
+    .slide .item:nth-child(5) {
+        left: calc(50% + 400px);
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1000px;
+        height: 650px;
+    }
+    
+    .container .slide .item {
+        width: 220px;
+        height: 320px;
+    }
+    
+    .slide .item:nth-child(4) {
+        left: calc(50% + 240px);
+    }
+    
+    .slide .item:nth-child(5) {
+        left: calc(50% + 480px);
+    }
+    
+    .item .content {
+        left: 120px;
+        width: 350px;
+    }
+    
+    .content .name {
+        font-size: 45px;
+    }
+    
+    .content .des {
         font-size: 18px;
     }
 }

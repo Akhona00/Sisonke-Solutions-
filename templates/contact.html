@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Page</title>
     <link rel="stylesheet" href="static/css/contacts.css">
+    <style>
+        /* Improved popup style */
+        #popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-weight: bold;
+            text-align: center;
+            min-width: 300px;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
     <nav class="Navbar">
@@ -33,13 +62,13 @@
                     <a href="/industry/government">Government & Municipal</a>
                 </div>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
         </ul>
     </nav>
 
-
     <section class="contact">
         <h1>Contact Us</h1>
-        <form action="contact" method="POST">
+        <form id="contact-form">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -52,7 +81,7 @@
                 <option value="logo-design">Logo Design</option>
                 <option value="tshirt-printing">T-Shirt Printing</option>
                 <option value="flyers">Flyers / Posters</option>
-                <option value="branding">Company Branding</option>
+                <option value="branding">Vehicle Branding</option>
                 <option value="social-media">Social Media Design</option>
                 <option value="other">Other</option>
             </select>
@@ -63,6 +92,7 @@
             <button type="submit">Send</button>
         </form>
     </section>
+    <div id="popup"></div>
 
     <section class="map">
         <iframe 
@@ -107,5 +137,48 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showPopup("Thank you for contacting us! We'll get back to you soon.", 'success');
+                    form.reset();
+                } else {
+                    showPopup(result.message || "Failed to send message. Please try again.", 'error');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showPopup("An error occurred. Please try again later.", 'error');
+            }
+        });
+        
+        function showPopup(message, type) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.className = type;
+            popup.style.display = 'block';
+            
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
+        }
+    </script>
 </body>
 </html>

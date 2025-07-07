@@ -17,7 +17,7 @@ body {
     position: absolute;
     width: 2px;
     height: 2px;
-    background: #013930;
+    background: #013938;
     border-radius: 50%;
     animation: float 6s ease-in-out infinite;
     opacity: 0.3;
@@ -101,8 +101,8 @@ body {
 
 .dropdown-content a:hover {
     background-color: #f1f1f1;
-    color: #063d3a !important;
-    border-left: 3px solid #063d3a;
+    color: #06393d !important;
+    border-left: 3px solid #063d3c;
     transform: translateX(5px);
 }
 
@@ -135,7 +135,7 @@ body {
 .hero h1 {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #186a47, #035a48, #0f847c9d);
+    background: linear-gradient(135deg, #186a67, #03575a, #0f74849d);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -172,7 +172,7 @@ body {
 
 .service-card {
     background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 179, 104, 0.2);
+    border: 1px solid rgba(0, 170, 179, 0.2);
     border-radius: 20px;
     padding: 2rem;
     transition: all 0.3s ease;
@@ -189,7 +189,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: conic-gradient(from 0deg, transparent, rgba(0, 179, 104, 0.1), transparent);
+    background: conic-gradient(from 0deg, transparent, rgba(0, 179, 170, 0.1), transparent);
     animation: rotate 4s linear infinite;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -205,14 +205,14 @@ body {
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 179, 104, 0.15);
-    border-color: #01655e;
+    box-shadow: 0 20px 40px rgba(0, 167, 179, 0.15);
+    border-color: #015b65;
 }
 
 .service-icon {
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #00b368, #00a3cc);
+    background: linear-gradient(135deg, #00b0b3, #00a3cc);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -264,7 +264,7 @@ body {
  .book-us-section {
     margin: 4rem 0;
     padding: 4rem 2rem;
-    background: linear-gradient(135deg, #053e44 0%, #054b46 100%);
+    background: linear-gradient(135deg, #053e44 0%, #05424b 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -306,7 +306,7 @@ body {
 
 .book-us-btn {
     background: white;
-    color: #063d3a !important;
+    color: #06353d !important;
     padding: 18px 36px;
     border-radius: 50px;
     text-decoration: none !important;
@@ -341,7 +341,7 @@ body {
 .book-us-btn:hover {
     transform: translateY(-5px) scale(1.08);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    color: #063d3a !important;
+    color: #06333d !important;
     text-decoration: none !important;
     border-color: white;
 }
@@ -362,7 +362,7 @@ body {
 }
 
 footer {
-    background-color: #054b53;
+    background-color: #23818b;
     color: white;
     padding: 40px 20px;
     margin-top: 50px;

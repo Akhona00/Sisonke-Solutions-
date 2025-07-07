@@ -39,6 +39,34 @@ function goToSlide(index) {
   updateSlidePosition();
 }
 
+// Mobile Menu Toggle
+function toggleMenu() {
+  const navMenu = document.getElementById("navMenu");
+  const menuToggle = document.querySelector(".menu-toggle");
+
+  navMenu.classList.toggle("active");
+  menuToggle.classList.toggle("active");
+}
+
+// Mobile Dropdown Toggle
+function toggleDropdown(element) {
+  if (window.innerWidth <= 768) {
+    element.classList.toggle("active");
+  }
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", function (event) {
+  const navMenu = document.getElementById("navMenu");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navbar = document.querySelector(".Navbar");
+
+  if (!navbar.contains(event.target) && navMenu.classList.contains("active")) {
+    navMenu.classList.remove("active");
+    menuToggle.classList.remove("active");
+  }
+});
+
 // Auto-play functionality
 let autoPlayInterval = setInterval(nextSlide, 4000);
 
@@ -130,4 +158,4 @@ document.addEventListener("keydown", (e) => {
   } else if (e.key === "ArrowRight") {
     nextSlide();
   }
-});
+}); 

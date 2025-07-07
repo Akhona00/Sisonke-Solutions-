@@ -10,14 +10,21 @@
 
     <nav class="Navbar">
         <div class="logo">
-            <img src="static/image/Polish_20241002_175631695.png" width="90px" height="70px" alt="Logo">
+            <img src="static/image/Polish_20241002_175631695.png" alt="Logo">
         </div>
-        <ul>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-menu" id="navMenu">
             <li><a href="home.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="service.html">Service</a></li>
             <li><a href="portfolio.html">Portfolio</a></li>
-            <li class="dropdown">
+            <li class="dropdown" onclick="toggleDropdown(this)">
                 <a href="/Industry">Industry</a>
                 <div class="dropdown-content">
                     <a href="/industry/healthcare">Healthcare & Medical</a>
@@ -33,7 +40,9 @@
                     <a href="/industry/nonprofit">Non-Profit Organizations</a>
                     <a href="/industry/government">Government & Municipal</a>
                 </div>
+            </li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
         </ul>
     </nav>
 
