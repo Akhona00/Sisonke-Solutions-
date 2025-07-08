@@ -37,7 +37,7 @@ FRONTEND_URL=http://localhost:5000
 🚀 Setup & Installation
 1. Clone the Repository (if using Git)
 bash
-git clone https://github.com/your-username/sisonke-solutions.git
+git clone https://github.com/Akhona00/sisonke-solutions.git
 cd sisonke-solutions
 2. Install Node.js Dependencies
 bash
