@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
@@ -706,8 +706,8 @@ createTables()
   });
 
 module.exports = app;
-=======
-require("dotenv").config();
+
+/* require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { Pool } = require("pg");
@@ -1405,7 +1405,7 @@ createTables()
       console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
       /* console.log(
         `Contact API available at: http://localhost:${PORT}/api/contacts`
-      ); */
+      ); 
     });
   })
   .catch((error) => {
@@ -1415,3 +1415,4 @@ createTables()
 
 module.exports = app;
 >>>>>>> a69f6bc17e93a75549369e269ed54ab15e863c52
+ */

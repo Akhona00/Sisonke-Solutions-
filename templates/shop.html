@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,12 +97,15 @@
       <input type="email" id="email" placeholder="Email Address" required>
       <input type="tel" id="phone" placeholder="Phone Number" required>
       <input type="text" id="Date" placeholder="Collect Date" required>
-      <label for="card-element">Credit or Debit Card</label>
-  <div id="card-element" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></div>
-  <div id="card-errors" role="alert" style="color: red; margin-top: 5px;"></div>
+      <label for="card-element" style="color: peachpuff; font-weight: bold;">Credit or Debit Card</label>
+      <div id="card-element" class="stripe-card-element"></div>
+      <div id="card-errors" role="alert"></div>
       <button type="submit" id="checkout-btn" disabled>Place Order</button>
     </form>
-
+      <!-- Success Message -->
+  <div class="success-message" id="success-message" style="display: none;">
+    Order placed successfully! We'll contact you soon.
+  </div>
     <footer>
         <div class="footer-container">
             <div class="address">
@@ -136,148 +139,108 @@
     </footer>
   
   </div>
+  <script src="static/js/shop.js"></script>
 </body>
-<script src="static/js/shop.js"></script>
-</html>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shop</title>
-  <link rel="stylesheet" href="static/css/shop.css" />
-  <script src="https://js.stripe.com/v3/"></script>
+<script>
+  // Function to toggle the navigation menu
+  function toggleNav() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('active');
+  }
+  // Function to add items to the cart
+  function addToCart(name, price) {
+    const cartContent = document.getElementById('cart-content');
+    const cartTotal = document.getElementById('cart-total');
+    const totalAmount = document.getElementById('total');  
+    const successMessage = document.getElementById('success-message');
+    const cartEmpty = document.querySelector('.cart-empty');
 
-</head>
-<body>
-    <nav class="Navbar">
-      <div class="logo">
-        <img src="static/image/Polish_20241002_175631695.png" alt="Logo">
-      </div>
-      <button class="nav-toggle" onclick="toggleNav()">☰</button>
-      <ul id="nav-menu">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="service.html">Service</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li class="dropdown">
-          <a href="#">Industry</a>
-          <div class="dropdown-content">
-            <a href="/industry/healthcare">Healthcare & Medical</a>
-            <a href="/industry/education">Education & Training</a>
-            <a href="/industry/retail">Retail & Fashion</a>
-            <a href="/industry/hospitality">Hospitality & Tourism</a>
-            <a href="/industry/construction">Construction & Real Estate</a>
-            <a href="/industry/automotive">Automotive</a>
-            <a href="/industry/food-beverage">Food & Beverage</a>
-            <a href="/industry/technology">Technology & IT</a>
-            <a href="/industry/finance">Finance & Banking</a>
-            <a href="/industry/manufacturing">Manufacturing</a>
-            <a href="/industry/nonprofit">Non-Profit Organizations</a>
-            <a href="/industry/government">Government & Municipal</a>
-          </div>
-        </li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="shop.html">Shop</a></li>
-      </ul>
-    </nav>
-  
-    <h1>Shop Our Services</h1>
-  
-    <div class="shop-container">
-      <div class="product">
-        <h2>Logo Design</h2>
-        <div class="price">R350</div>
-        <div class="description">Professional logo design for your brand</div>
-        <button onclick="addToCart('Logo Design', 350)">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h2>Flyer Design</h2>
-        <div class="price">R250</div>
-        <div class="description">Eye-catching flyer design for your events</div>
-        <button onclick="addToCart('Flyer Design', 250)">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h2>Vehicle Branding</h2>
-        <div class="price">R1000</div>
-        <div class="description">Complete vehicle branding solution</div>
-        <button onclick="addToCart('Vehicle Branding', 1000)">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h2>T-Shirt Printing</h2>
-        <div class="price">R200</div>
-        <div class="description">High-quality custom t-shirt printing</div>
-        <button onclick="addToCart('T-Shirt Printing', 200)">Add to Cart</button>
-      </div>
-      <div class="product">
-        <h2>Banner Design</h2>
-        <div class="price">R500</div>
-        <div class="description">Large format banner design and printing</div>
-        <button onclick="addToCart('Banner Design', 500)">Add to Cart</button>
-      </div>
-    </div>
-  
-    <div class="cart">
-      <h2>Shopping Cart</h2>
-      <div id="cart-content">
-        <div class="cart-empty">Your cart is empty</div>
-      </div>
-      <div class="cart-total" id="cart-total" style="display: none;">
-        <div class="total-amount">Total: R<span id="total">0</span></div>
-      </div>
-    </div>
-  
-    <div class="success-message" id="success-message">
-      Order placed successfully! We'll contact you soon.
-    </div>
-  
-    <form class="checkout" id="checkout-form">
-      <h2>Payment Information</h2>
-      <input type="text" id="fullName" placeholder="Full Name" required>
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="text" id="Date" placeholder="Collect Date" required>
-      <label for="card-element">Credit or Debit Card</label>
-  <div id="card-element" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px;"></div>
-  <div id="card-errors" role="alert" style="color: red; margin-top: 5px;"></div>
-      <button type="submit" id="checkout-btn" disabled>Place Order</button>
-    </form>
+    if (cart[name]) {
+      cart[name].quantity++;
+    } else {
+      cart[name] = { price, quantity: 1 };
+    }
 
-    <footer>
-        <div class="footer-container">
-            <div class="address">
-                <h2>Address</h2>
-                <p>
-                    1492 B4 ROAD <br>
-                    Edendale A <br>
-                    Pietermaritzburg, 3217 <br>
-                    Kwa-Zulu Natal
-                </p>
-            </div>
-    
-            <div class="social"> 
-                <h2>Social</h2>
-                <a href="#">
-                    <img src="static/image/facebook.png" alt="Facebook" height="40" width="40">
-                </a>
-                <a href="#">
-                    <img src="static/image/instagram.png" alt="Instagram" height="40" width="40">
-                </a>
-            </div>
-    
-            <div class="support">
-                <h2>Support</h2>
-                <div class="contact-info">
-                    <img src="static/image/phone-call.png" alt="Phone: +27 (78) 4643-899" title="+27 (78) 4643-899" height="30" width="30">
-                    <img src="static/image/email.png" alt="Email: info@sisonkesolutions.co.za" title="info@sisonkesolutions.co.za" height="30" width="30">
-                </div>
-            </div>
-        </div>
-    </footer>
-  
-  </div>
-</body>
-<script src="static/js/shop.js"></script>
+    updateCartDisplay();
+    validateForm();
+    successMessage.style.display = 'none';
+    cartEmpty.style.display = 'none';
+  }
+  // Function to update the cart display
+  function updateCartDisplay() {
+    const cartContent = document.getElementById('cart-content');
+    const totalAmount = document.getElementById('total');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    if (!cartContent || !totalAmount || !cartTotal || !checkoutBtn) {
+      console.error('Cart elements not found in DOM');
+      return;
+    }
+    cartContent.innerHTML = '';
+    let total = 0;
+    for (const [name, { price, quantity }] of Object.entries(cart)) {
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'cart-item';
+      itemDiv.innerHTML = `
+        <span class="item-name">${name}</span>
+        <span class="item-price">R${price}</span>
+        <span class="item-quantity">x${quantity}</span>
+        <span class="item-total">R${price * quantity}</span>
+      `;
+      cartContent.appendChild(itemDiv);
+      total += price * quantity;
+    }
+    totalAmount.textContent = total.toFixed(2);
+    if (total > 0) {
+      cartTotal.style.display = 'block';
+      checkoutBtn.disabled = false;
+    } else {
+      cartTotal.style.display = 'none';
+      checkoutBtn.disabled = true;
+    }
+  }
+  // Function to validate the form
+  function validateForm() {
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date = document.getElementById('Date').value.trim();
+    const checkoutBtn = document.getElementById('checkout-btn');  
+    if (fullName && email && phone && date && Object.keys(cart).length > 0) {
+      checkoutBtn.disabled = false;
+    } else {
+      checkoutBtn.disabled = true;
+    }
+  }
+  // Initialize the cart object
+  const cart = {};
+  // Add event listeners to form fields for validation
+  document.getElementById('fullName').addEventListener('input', validateForm);
+  document.getElementById('email').addEventListener('input', validateForm);
+  document.getElementById('phone').addEventListener('input', validateForm);
+  document.getElementById('Date').addEventListener('input', validateForm);
+  // Add event listener to the checkout form
+  document.getElementById('checkout-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date = document.getElementById('Date').value.trim();
+    const successMessage = document.getElementById('success-message');
+    const checkoutBtn = document.getElementById('checkout-btn');  
+    if (fullName && email && phone && date && Object.keys(cart).length > 0) {
+      // Simulate successful order placement
+      successMessage.style.display = 'block';
+      checkoutBtn.disabled = true;
+      document.getElementById('checkout-form').reset();
+      Object.keys(cart).forEach(key => delete cart[key]);
+      updateCartDisplay();
+    } else {
+      alert('Please fill in all fields and add items to the cart.');  
+    }
+    validateForm();
+
+  });
+</script>
 </html>
->>>>>>> a69f6bc17e93a75549369e269ed54ab15e863c52

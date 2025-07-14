@@ -1,10 +1,11 @@
 body {
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
+
 }
 
 .logo {
-    background-color: white;
+    background-color: white 60%;
     border-radius: 100%;
     display: flex;
     justify-content: center;
@@ -109,6 +110,7 @@ h2{
     max-width: 1200px;
     margin: 3rem auto;
     padding: 0 2rem;
+
 }
 
 /* Project Navigation */
@@ -119,7 +121,7 @@ h2{
     gap: 1rem;
     margin-bottom: 3rem;
     padding: 1.5rem;
-    background: white;
+    background: white 60%;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
