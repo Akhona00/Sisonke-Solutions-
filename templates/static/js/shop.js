@@ -1,5 +1,5 @@
 
-const stripe = Stripe("pk_test_qblFNYngBkEdjEZ16jxxoWSM"); 
+const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY || "your-publishable-key-here"); 
 const elements = stripe.elements();
 const cardElement = elements.create("card");
 const API_BASE_URL = "http://localhost:5000";
