@@ -167,39 +167,49 @@
     cartEmpty.style.display = 'none';
   }
   // Function to update the cart display
-  function updateCartDisplay() {
-    const cartContent = document.getElementById('cart-content');
-    const totalAmount = document.getElementById('total');
-    const cartTotal = document.getElementById('cart-total');
-    const checkoutBtn = document.getElementById('checkout-btn');
+function updateCartDisplay() {
+  const cartContent = document.getElementById('cart-content');
+  const totalAmount = document.getElementById('total');
+  const cartTotal = document.getElementById('cart-total');
+  const checkoutBtn = document.getElementById('checkout-btn');
 
-    if (!cartContent || !totalAmount || !cartTotal || !checkoutBtn) {
-      console.error('Cart elements not found in DOM');
-      return;
-    }
-    cartContent.innerHTML = '';
-    let total = 0;
-    for (const [name, { price, quantity }] of Object.entries(cart)) {
-      const itemDiv = document.createElement('div');
-      itemDiv.className = 'cart-item';
-      itemDiv.innerHTML = `
-        <span class="item-name">${name}</span>
-        <span class="item-price">R${price}</span>
-        <span class="item-quantity">x${quantity}</span>
-        <span class="item-total">R${price * quantity}</span>
-      `;
-      cartContent.appendChild(itemDiv);
-      total += price * quantity;
-    }
-    totalAmount.textContent = total.toFixed(2);
-    if (total > 0) {
-      cartTotal.style.display = 'block';
-      checkoutBtn.disabled = false;
-    } else {
-      cartTotal.style.display = 'none';
-      checkoutBtn.disabled = true;
-    }
+  if (!cartContent || !totalAmount || !cartTotal || !checkoutBtn) {
+    console.error('Cart elements not found in DOM');
+    return;
   }
+
+  cartContent.innerHTML = '';
+  let total = 0;
+
+  if (Object.keys(cart).length === 0) {
+    cartContent.innerHTML = '<div class="cart-empty">Your cart is empty</div>';
+    cartTotal.style.display = 'none';
+    checkoutBtn.disabled = true;
+    return;
+  }
+
+  const cartItemsList = document.createElement('ul');
+  for (const [name, { price, quantity }] of Object.entries(cart)) {
+    const cartItem = document.createElement('li');
+    cartItem.innerHTML = `
+      <span>${name} - R${price} x ${quantity}</span>
+      <button class="remove-btn" onclick="removeFromCart('${name}')" style="color: red; ;">Remove</button>
+    `;
+    cartItemsList.appendChild(cartItem);
+    total += price * quantity;
+  }
+  cartContent.appendChild(cartItemsList);
+  totalAmount.textContent = total.toFixed(2);
+  cartTotal.style.display = 'block';
+  checkoutBtn.disabled = false;
+}
+
+// Add this function to handle removing items
+function removeFromCart(name) {
+  delete cart[name];
+  updateCartDisplay();
+  validateForm();
+}
   // Function to validate the form
   function validateForm() {
     const fullName = document.getElementById('fullName').value.trim();

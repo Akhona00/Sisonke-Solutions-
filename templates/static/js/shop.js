@@ -1,5 +1,5 @@
 
-const stripe = Stripe(process.env.STRIPE_PUBLISHABLE_KEY || "your-publishable-key-here"); 
+const stripe = Stripe("pk apiKey_here"); // Replace with your actual Stripe public key
 const elements = stripe.elements();
 const cardElement = elements.create("card");
 const API_BASE_URL = "http://localhost:5000";
@@ -57,7 +57,7 @@ function updateCartDisplay() {
     html += `
       <li>
         ${name} - R${price} x ${quantity}
-        <button onclick="removeFromCart('${name}')">Remove</button>
+        <button class="remove-btn" onclick="removeFromCart('${name}')">Remove</button>
       </li>
     `;
   });
